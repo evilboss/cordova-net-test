@@ -19,10 +19,10 @@
   <allow-intent href="geo:*"/>
   <platform name="android">
     <allow-intent href="market:*"/>
-    <icon src="res/icons/android/drawable-ldpi/ic_launcher.png" density="ldpi"/>
-    <icon src="res/icons/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>
-    <icon src="res/icons/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
-    <icon src="res/icons/android/drawable-xhdpi/ic_launcher.png" density="xhdpi"/>
+    <icon src="resources/icons/android/drawable-ldpi/ic_launcher.png" density="ldpi"/>
+    <icon src="resources/icons/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>
+    <icon src="resources/icons/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
+    <icon src="resources/icons/android/drawable-xhdpi/ic_launcher.png" density="xhdpi"/>
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>
