@@ -48,8 +48,8 @@ function updateUi() {
   intervalID = setInterval(function () {
     getRequest();
     checkConnection();
-    ping('github.com', 'ping');
-    ping('8.8.8.8', 'dns');
+    ping('8.8.8.8', 'ping');
+    ping('cloudstaff.com', 'dns');
   }, 100);
 }
 function setLed(target,result){

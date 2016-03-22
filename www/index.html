@@ -9,6 +9,7 @@
   <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"
         media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="css/index.css"/>
+  <link type="text/css" rel="stylesheet" href="css/loader.css"/>
   <title>cs-network-tester</title>
 </head>
 <body>
@@ -36,7 +37,18 @@
         </div>
         <div class="col s2">
           <div class="led-box">
-            <div id="netInfoLed"></div>
+            <div id="netInfoLed">
+              <div className="cssload-loader">
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+                <div className="cssload-side"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -49,11 +61,23 @@
       <div class="row">
         <div class="col s10">
           <h5>NS Lookup</h5>
-          <p id="dns"></p>
+
+          <p id="dns">
+          <div className="cssload-loader">
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+          </div>
+          </p>
         </div>
         <div class="col s2">
           <div class="led-box">
-            <div class="{{dnsResult}}"></div>
+            <div></div>
           </div>
         </div>
       </div>
@@ -68,6 +92,16 @@
           <h5>Ping</h5>
 
           <p id="ping">
+          <div className="cssload-loader">
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+          </div>
           </p>
         </div>
         <div class="col s2">
@@ -86,7 +120,18 @@
         <div class="col s10">
           <h5>HTTP</h5>
 
-          <p id="httpResult"></p>
+          <p id="httpResult">
+          <div className="cssload-loader">
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+            <div className="cssload-side"></div>
+          </div>
+          </p>
         </div>
         <div class="col s2">
           <div class="led-box">
