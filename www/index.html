@@ -31,12 +31,12 @@
         <div class="col s10">
           <h5>Internet Connectivity</h5>
 
-          <p>Connection TYPE: {{networkInfo}}</p>
+          <p>Connection TYPE: <span id="netInfo"></span></p>
 
         </div>
         <div class="col s2">
           <div class="led-box">
-            <div class="led-red"></div>
+            <div id="netInfoLed"></div>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
       <div class="row">
         <div class="col s10">
           <h5>NS Lookup</h5>
-          {{{dns}}}
+          <p id="dns"></p>
         </div>
         <div class="col s2">
           <div class="led-box">
@@ -67,12 +67,12 @@
         <div class="col s10">
           <h5>Ping</h5>
 
-          <p>{{ping}}
+          <p id="ping">
           </p>
         </div>
         <div class="col s2">
           <div class="led-box">
-            <div class="{{pingResult}}"></div>
+            <div id="pingLed"></div>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
         </div>
         <div class="col s2">
           <div class="led-box">
-            <div class="{{httpStatus}}"></div>
+            <div id="httpLed"></div>
           </div>
 
         </div>
@@ -151,7 +151,6 @@
     </ul>
   </div>
 </div>
-
 
 
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
