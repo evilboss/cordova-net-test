@@ -3,7 +3,7 @@
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>CS-Network-Tester</name>
   <description>
-    An app that check
+    An app that checks Network Information.
   </description>
   <author email="jr.evilboss@gmail.com" href="https://github.com/evilboss">
     Jr Reyes
