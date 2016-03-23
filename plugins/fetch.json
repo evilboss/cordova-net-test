@@ -38,5 +38,40 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-networkinterface": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-networkinterface"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com-badrit-macaddress": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mohamed-salah/MacAddress.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "fi.peekpoke.cordova.dnssd": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jarnoh/cordova-dnssd.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "de.pmorjan.cordova.plugin.dns": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pmorjan/cordova-plugin-dns.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

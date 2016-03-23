@@ -35,6 +35,27 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-networkinterface/www/networkinterface.js",
+        "id": "cordova-plugin-networkinterface.networkinterface",
+        "clobbers": [
+            "window.networkinterface"
+        ]
+    },
+    {
+        "file": "plugins/com-badrit-macaddress/www/MacAddress.js",
+        "id": "com-badrit-macaddress.MacAddress",
+        "clobbers": [
+            "window.MacAddress"
+        ]
+    },
+    {
+        "file": "plugins/de.pmorjan.cordova.plugin.dns/www/dns.js",
+        "id": "de.pmorjan.cordova.plugin.dns.dns",
+        "clobbers": [
+            "cordova.plugins.dns"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -193,6 +214,10 @@ module.exports.metadata =
     "cordova-plugin-http": "0.2.0",
     "cordova-plugin-network-information": "1.2.0",
     "cordova-plugin-ping": "0.3.1",
+    "cordova-plugin-networkinterface": "1.0.8",
+    "com-badrit-macaddress": "0.2.0",
+    "fi.peekpoke.cordova.dnssd": "0.0.2",
+    "de.pmorjan.cordova.plugin.dns": "0.0.1",
     "cordova-plugin-file": "4.1.1"
 }
 // BOTTOM OF METADATA

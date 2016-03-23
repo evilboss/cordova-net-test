@@ -1,6 +1,10 @@
 /**
  * Created by gilbertor on 3/17/16.
  */
+var connected = false;
+var dnsDone = false;
+var pingDone = false;
+
 function setConnectionState(connectionType) {
   if (connectionType === 'WiFi connection') {
     return 'led-green'
@@ -36,30 +40,112 @@ function getRequest() {
   cordovaHTTP.setHeader("Access-Control-Allow-Origin", "*");
   cordovaHTTP.get(url, {}, {}, function (response) {
     $('#httpResult').html(response.data);
-    $('#httpLed').addClass('led-green');
+    $('#httpLed').html('<div class="led-green"></div>');
+    $('#isConnected').html('<span class="green-text">Connected</span>');
+    networkinterface.getIPAddress(function (ip) {
+      $('#ip-address').html(ip);
+    });
+    window.MacAddress.getMacAddress(
+      function (macAddress) {
+        $('#mac-address').html(macAddress);
+      }, function (fail) {
+        $('#mac-address').html(fail);
+      }
+    );
+    $('#network-status').html('On-Line');
+    connected = true;
+
 
   }, function (response) {
     $('#httpResult').html(response.error);
-    $('#httpLed').addClass('led-red');
+    $('#httpLed').html('<div class="led-red"></div>');
+    $('#isConnected').html('<span class="red-text">Please connect to the internet</span>');
+    connected = false;
   });
 
+
 }
+function makeid() {
+  var text = "";
+  var possible = "abcdefghijklmnopqrstuvwxyz";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
+function setDns(ip) {
+  alert(ip);
+}
+function getDns(url) {
+  cordova.plugins.dns.resolve(url, function (ip) {
+
+    if(ip){
+      $('#led-dns').html('<div class="led-green"></div>');
+      $('#status-dns').html('<strong class="green-text text-darken-3">Resolved</strong>');
+      $('#dns').html('<strong class="green-text text-darken-3">Resolved</strong>');
+    }
+    $('#ip-dns').html('<strong class="green-text text-darken-3">' + ip + '</strong>');
+    $('#target-dns').html('<strong class="green-text text-darken-3">' + url + '</strong>');
+
+
+
+  });
+}
+
 function updateUi() {
   intervalID = setInterval(function () {
-    getRequest();
     checkConnection();
-    ping('8.8.8.8', 'ping');
-    ping('cloudstaff.com', 'dns');
+    getRequest();
+    if (connected) {
+      if (!pingDone) {
+        ping('8.8.8.8', 'ping');
+        pingDone = true;
+      }
+      if (!dnsDone) {
+        getDns(makeid() + '.cloudstaff.io');
+        dnsDone = true;
+      }
+
+    }
   }, 100);
+
 }
-function setLed(target,result){
+function setLed(target, result) {
+  var speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
+  if (result) {
+    result = parseInt(result);
+    if (result < 100) {
+      speed = '<strong class="green-text">Very Fast</strong>';
+      $('#led-' + target).html('<div class="led-green"></div>');
+
+    }
+    if (result < 200) {
+      speed = '<strong class="blue-text">Fast</strong>';
+      $('#led-' + target).html('<div class="led-blue"></div>');
+
+    }
+    if (result < 500) {
+      speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
+      $('#led-' + target).html('<div class="led-yellow"></div>');
+
+    }
+    $('#' + target).html(speed);
+  } else {
+    $('#' + target).html('<strong class="red-text text-darken-3">Timeout</strong>');
+  }
 
 }
 function ping(url, target) {
   var p, success, err, ipList;
   ipList = [url];
   success = function (results) {
-    $('#' + target).html(JSON.stringify(results));
+    if (results[0]) {
+      $('#target-' + target).html(results[0].target);
+      $('#ave-' + target).html(results[0].avg);
+      $('#status-' + target).html(results[0].status);
+      setLed(target, results[0].avg)
+    }
+
 
   };
   err = function (e) {
@@ -68,11 +154,11 @@ function ping(url, target) {
   p = new Ping();
   p.ping(ipList, success, err);
 }
-
 function init() {
   $("#exit-app").click(function () {
     closeApp();
   });
+  $('.modal-trigger').leanModal();
 
   updateUi();
 }

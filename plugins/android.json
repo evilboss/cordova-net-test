@@ -27,6 +27,18 @@
                         {
                             "xml": "<feature name=\"Ping\"><param name=\"android-package\" value=\"org.tiste.cordova.ping.Ping\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"networkinterface\"><param name=\"android-package\" value=\"com.albahra.plugin.networkinterface.networkinterface\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"MacAddressPlugin\"><param name=\"android-package\" value=\"com.badrit.MacAddress.MacAddressPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DNS\"><param name=\"android-package\" value=\"de.pmorjan.cordova.plugin.dns.DNS\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -41,6 +53,10 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "count": 2
                         }
                     ],
                     "/manifest": [
@@ -64,6 +80,18 @@
             "PACKAGE_NAME": "com.cloudstaff.evilboss.csnetworktester"
         },
         "cordova-plugin-ping": {
+            "PACKAGE_NAME": "com.cloudstaff.evilboss.csnetworktester"
+        },
+        "cordova-plugin-networkinterface": {
+            "PACKAGE_NAME": "com.cloudstaff.evilboss.csnetworktester"
+        },
+        "com-badrit-macaddress": {
+            "PACKAGE_NAME": "com.cloudstaff.evilboss.csnetworktester"
+        },
+        "fi.peekpoke.cordova.dnssd": {
+            "PACKAGE_NAME": "com.cloudstaff.evilboss.csnetworktester"
+        },
+        "de.pmorjan.cordova.plugin.dns": {
             "PACKAGE_NAME": "com.cloudstaff.evilboss.csnetworktester"
         }
     },

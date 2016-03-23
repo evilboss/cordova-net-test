@@ -26,7 +26,7 @@
 </div>
 <div class="container">
   <div class="divider"></div>
-  <a class="modal-trigger" href="#modal1">
+  <a class="modal-trigger" href="#network-modal">
     <div class="section">
       <div class="row">
         <div class="col s10">
@@ -56,28 +56,19 @@
   </a>
 
   <div class="divider"></div>
-  <a class="modal-trigger" href="#modal1">
+  <a class="modal-trigger" href="#dns-modal">
     <div class="section">
       <div class="row">
         <div class="col s10">
           <h5>NS Lookup</h5>
 
           <p id="dns">
-          <div className="cssload-loader">
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-          </div>
+            <strong class="red-text text-darken-3">Not Connected</strong>
           </p>
         </div>
         <div class="col s2">
-          <div class="led-box">
-            <div></div>
+          <div id="led-dns" class="led-box">
+            <div class="led-red"></div>
           </div>
         </div>
       </div>
@@ -85,28 +76,18 @@
   </a>
 
   <div class="divider"></div>
-  <a class="modal-trigger" href="#modal1">
+  <a class="modal-trigger" href="#ping-modal">
     <div class="section">
       <div class="row">
         <div class="col s10">
           <h5>Ping</h5>
 
           <p id="ping">
-          <div className="cssload-loader">
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-          </div>
-          </p>
+            <strong class="red-text text-darken-3">Not Connected</strong>
         </div>
         <div class="col s2">
-          <div class="led-box">
-            <div id="pingLed"></div>
+          <div id="led-ping">
+            <div class="led-red"></div>
           </div>
         </div>
       </div>
@@ -114,28 +95,21 @@
   </a>
 
   <div class="divider"></div>
-  <a class="modal-trigger" href="#modal1">
+  <a>
     <div class="section">
       <div class="row">
         <div class="col s10">
-          <h5>HTTP</h5>
+          <h6><strong>HTTP</strong>
+            <small id="isConnected">
+            </small>
+          </h6>
 
-          <p id="httpResult">
-          <div className="cssload-loader">
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-            <div className="cssload-side"></div>
-          </div>
-          </p>
+          <p id="httpResult"></p>
+
         </div>
         <div class="col s2">
-          <div class="led-box">
-            <div id="httpLed"></div>
+          <div id="httpLed" class="led-box">
+            <div class="led-red"></div>
           </div>
 
         </div>
@@ -153,45 +127,61 @@
   </div>
 
 </div>
-<div id="modal1" class="modal bottom-sheet">
+<div id="ping-modal" class="modal bottom-sheet">
   <div class="modal-content">
-    <h4>Modal Header</h4>
+    <h4>Ping Result Info</h4>
     <ul class="collection">
-      <li class="collection-item avatar">
-        <img src="images/yuna.jpg" alt="" class="circle">
-        <span class="title">Title</span>
-
-        <p>First Line <br>
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <li class="collection-item">
+        <span class="title">Target</span>
+        <a href="#!" class="secondary-content"><i id="target-ping" class="material-icons"></i></a>
       </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title">Title</span>
-
-        <p>First Line <br>
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <li class="collection-item">
+        <span class="title">Speed</span>
+        <a href="#!" class="secondary-content"><i id="ave-ping" class="material-icons"></i></a>
       </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle green">assessment</i>
-        <span class="title">Title</span>
+      <li class="collection-item">
+        <span class="title">Status</span>
 
-        <p>First Line <br>
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+
+        <a href="#!" class="secondary-content"><i id="status-ping" class="material-icons">grade</i></a>
       </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle red">play_arrow</i>
-        <span class="title">Title</span>
-
-        <p>First Line <br>
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </ul>
+  </div>
+</div>
+<div id="dns-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>DNS Lookup Info</h4>
+    <ul class="collection">
+      <li class="collection-item">
+        <span class="title">Target</span>
+        <a href="#!" class="secondary-content"><i id="target-dns" class="material-icons"></i></a>
+      </li>
+      <li class="collection-item">
+        <span class="title">IP Address</span>
+        <a href="#!" class="secondary-content"><i id="ip-dns" class="material-icons"></i></a>
+      </li>
+      <li class="collection-item">
+        <span class="title">Status</span>
+        <a href="#!" class="secondary-content"><i id="status-dns" class="material-icons"></i></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="network-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Network Info</h4>
+    <ul class="collection">
+      <li class="collection-item">
+        <span class="title">IP address</span>
+        <a href="#!" class="secondary-content"><i id="ip-address" class="material-icons">Not Connected</i></a>
+      </li>
+      <li class="collection-item">
+        <span class="title">Mac Address</span>
+        <a href="#!" class="secondary-content"><i id="mac-address" class="material-icons">Not Connected</i></a>
+      </li>
+      <li class="collection-item">
+        <span class="title">Status</span>
+        <a href="#!" class="secondary-content"><i id="network-status" class="material-icons">Offline</i></a>
       </li>
     </ul>
   </div>
@@ -200,7 +190,9 @@
 
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="bower_components/faker/dist/faker.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
+
