@@ -30,7 +30,7 @@ function checkConnection() {
   states[Connection.CELL] = 'Cell generic connection';
   states[Connection.NONE] = 'No network connection';
   $('#netInfo').html(states[networkState]);
-  $('#netInfoLed').addClass(setConnectionState(states[networkState]));
+  $('#netInfoLed').html('<div class="' + setConnectionState(states[networkState]) + '"></div>');
 }
 function closeApp() {
   navigator.app.exitApp();
@@ -73,20 +73,15 @@ function makeid() {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   return text;
 }
-function setDns(ip) {
-  alert(ip);
-}
 function getDns(url) {
   cordova.plugins.dns.resolve(url, function (ip) {
-
-    if(ip){
+    if (ip) {
       $('#led-dns').html('<div class="led-green"></div>');
       $('#status-dns').html('<strong class="green-text text-darken-3">Resolved</strong>');
       $('#dns').html('<strong class="green-text text-darken-3">Resolved</strong>');
     }
     $('#ip-dns').html('<strong class="green-text text-darken-3">' + ip + '</strong>');
     $('#target-dns').html('<strong class="green-text text-darken-3">' + url + '</strong>');
-
 
 
   });
@@ -114,17 +109,17 @@ function setLed(target, result) {
   var speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
   if (result) {
     result = parseInt(result);
-    if (result < 100) {
-      speed = '<strong class="green-text">Very Fast</strong>';
+    if (result < 50) {
+      speed = '<strong class="green-text">Fast</strong>';
       $('#led-' + target).html('<div class="led-green"></div>');
 
     }
-    if (result < 200) {
-      speed = '<strong class="blue-text">Fast</strong>';
+    if (result < 100) {
+      speed = '<strong class="blue-text">OK</strong>';
       $('#led-' + target).html('<div class="led-blue"></div>');
 
     }
-    if (result < 500) {
+    if (result < 100) {
       speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
       $('#led-' + target).html('<div class="led-yellow"></div>');
 
