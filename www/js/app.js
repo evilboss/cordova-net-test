@@ -1,6 +1,7 @@
 /**
  * Created by gilbertor on 3/17/16.
  */
+var connected = false;
 function setConnectionState(connectionType) {
   if (connectionType === 'WiFi connection') {
     return 'led-green'
@@ -37,22 +38,31 @@ function getRequest() {
   cordovaHTTP.get(url, {}, {}, function (response) {
     $('#httpResult').html(response.data);
     $('#httpLed').addClass('led-green');
+    $('#isConnected').html('Connected');
+    connected = true;
+
+
 
   }, function (response) {
     $('#httpResult').html(response.error);
     $('#httpLed').addClass('led-red');
+    $('#isConnected').html('Please connect to the internet');
+    connected = false;
   });
 
 }
 function updateUi() {
   intervalID = setInterval(function () {
-    getRequest();
     checkConnection();
-    ping('8.8.8.8', 'ping');
-    ping('cloudstaff.com', 'dns');
+   getRequest();
+    if(connected){
+      ping('8.8.8.8', 'ping');
+      ping('cloudstaff.com', 'dns');
+    }
   }, 100);
+
 }
-function setLed(target,result){
+function setLed(target, result) {
 
 }
 function ping(url, target) {
@@ -73,7 +83,6 @@ function init() {
   $("#exit-app").click(function () {
     closeApp();
   });
-
   updateUi();
 }
 
