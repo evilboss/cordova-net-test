@@ -1,7 +1,0 @@
-# Created by .ignore support plugin (hsz.mobi)
-# ignore all plugin files...
-*
-# ... except for android config and fetch config.
-!.gitignore
-!android.json
-!fetch.json

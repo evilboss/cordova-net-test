@@ -28,13 +28,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-ping/www/ping.js",
-        "id": "cordova-plugin-ping.ping",
-        "clobbers": [
-            "Ping"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-networkinterface/www/networkinterface.js",
         "id": "cordova-plugin-networkinterface.networkinterface",
         "clobbers": [
@@ -42,17 +35,24 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-ping/www/ping.js",
+        "id": "cordova-plugin-ping.ping",
+        "clobbers": [
+            "Ping"
+        ]
+    },
+    {
+        "file": "plugins/cordova-dns-plugin/www/DnsQuery.js",
+        "id": "cordova-dns-plugin.DnsQuery",
+        "clobbers": [
+            "cordova.plugins.dns"
+        ]
+    },
+    {
         "file": "plugins/com-badrit-macaddress/www/MacAddress.js",
         "id": "com-badrit-macaddress.MacAddress",
         "clobbers": [
             "window.MacAddress"
-        ]
-    },
-    {
-        "file": "plugins/de.pmorjan.cordova.plugin.dns/www/dns.js",
-        "id": "de.pmorjan.cordova.plugin.dns.dns",
-        "clobbers": [
-            "cordova.plugins.dns"
         ]
     },
     {
@@ -213,11 +213,10 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.1",
     "cordova-plugin-http": "0.2.0",
     "cordova-plugin-network-information": "1.2.0",
-    "cordova-plugin-ping": "0.3.1",
     "cordova-plugin-networkinterface": "1.0.8",
+    "cordova-plugin-ping": "0.3.1",
+    "cordova-dns-plugin": "1.0.0",
     "com-badrit-macaddress": "0.2.0",
-    "fi.peekpoke.cordova.dnssd": "0.0.2",
-    "de.pmorjan.cordova.plugin.dns": "0.0.1",
     "cordova-plugin-file": "4.1.1"
 }
 // BOTTOM OF METADATA
