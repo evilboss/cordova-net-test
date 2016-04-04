@@ -35,8 +35,12 @@ function closeApp() {
   navigator.app.exitApp();
 }
 function getRequest() {
-  if(!connected){
+  if (!connected) {
     var url = "https://toolbox.cloudstaff.com/~noc-display/test.txt";
+    var settingsUrl = window.localStorage.getItem("url");
+    if (settingsUrl) {
+      url = settingsUrl;
+    }
     cordovaHTTP.setHeader("Access-Control-Allow-Origin", "*");
     cordovaHTTP.get(url, {}, {}, function (response) {
       $('#httpResult').html(response.data);
@@ -54,18 +58,20 @@ function getRequest() {
       );
       $('#network-status').html('On-Line');
       connected = true;
-
-
     }, function (response) {
+
       $('#httpResult').html(response.error);
       $('#httpLed').html('<div class="led-red"></div>');
       $('#isConnected').html('<span class="red-text">Please connect to the internet</span>');
       connected = false;
+      if (response.status) {
+        if (response.status == '302') {
+          $('#isConnected').html('<span class="red-text">Request Has Been redirected to a different url</span>');
+        }
+        connected = true;
+      }
     });
   }
-
-
-
 }
 function makeid() {
   var text = "";
@@ -94,7 +100,12 @@ function updateUi() {
     getRequest();
     if (connected) {
       if (!pingDone) {
-        ping('8.8.8.8', 'ping');
+        var pingTarget = '8.8.8.8';
+        var settingsPingTarget = window.localStorage.getItem("ping-target");
+        if (settingsPingTarget) {
+          pingTarget = settingsPingTarget;
+        }
+        ping(pingTarget, 'ping');
         pingDone = true;
       }
       if (!dnsDone) {
@@ -148,8 +159,7 @@ function ping(url, target) {
   p = new Ping();
   p.ping(ipList, success, err);
 }
-function initializeApp(){
-  Materialize.fadeInImage('#network-tester');
+function initializeApp() {
   $(".button-collapse").sideNav();
   $('#exit-app').click(function () {
     closeApp();
