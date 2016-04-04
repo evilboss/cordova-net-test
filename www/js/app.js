@@ -10,6 +10,4 @@ function init() {
   $('.modal-trigger').leanModal();
   updateUi();
 }
-
-
 document.addEventListener("deviceready", init, false);
