@@ -13,29 +13,33 @@ if [ "$(type -t brew)" ];
                   echo '# node path
                    export PATH="$HOME/.node/bin:$PATH"' >>~/.bashrc
             fi
-
-            if [ "$(type -t cordova)" ];
-               then
-                    echo "cordova Already Installed now Installing bower"
-               else
-                    echo "cordova not installed in this machine please wait installing cordova via npm"
-                    npm install -g cordova
-            fi
-
-            if [ "$(type -t bower)" ];
-               then
-                    echo "bower Already Installed starting to install project dependencies"
-               else
-                    echo "bower not installed in this machine please wait installing bower via npm"
-                    npm install -g bower
-            fi
-            if [ -d "platforms" ]
+            if [ "$(type -t npm)" ];
               then
-              echo "platforms already exist clearing plugins"
-              sh ./uninstall.sh
+                if [ "$(type -t cordova)" ];
+                   then
+                        echo "cordova Already Installed now Installing bower"
+                   else
+                        echo "cordova not installed in this machine please wait installing cordova via npm"
+                        npm install -g cordova
+                fi
+
+                if [ "$(type -t bower)" ];
+                   then
+                        echo "bower Already Installed starting to install project dependencies"
+                   else
+                        echo "bower not installed in this machine please wait installing bower via npm"
+                        npm install -g bower
+                fi
+                if [ -d "platforms" ]
+                  then
+                  echo "platforms already exist clearing plugins"
+                  sh ./uninstall.sh
+                fi
+                echo "Running install script"
+                sh ./install.sh
+              else
+                echo "looks like there is a problem with npm"
             fi
-            echo "Running install script"
-            sh ./install.sh
    else
         echo "Brew not installed in this machine please wait installing linux brew"
         sudo apt-get install build-essential curl git python-setuptools ruby
