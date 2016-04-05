@@ -7,7 +7,7 @@ if [ "$(type -t brew)" ];
                   echo "Node Already Installed now Installing NPM"
              else
                   echo "node not installed in this machine please wait installing node via linux brew"
-                  brew install node --without-npm
+                  brew install node --without-npm -v
                   echo prefix=~/.npm-packages >> ~/.npmrc
                   curl -L https://www.npmjs.com/install.sh | sh
                   echo '# node path
