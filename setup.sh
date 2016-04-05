@@ -9,17 +9,13 @@ if [ "$(type -t brew)" ];
                   brew doctor
                   echo "node not installed in this machine please wait installing node via linux brew"
                   brew install node -v
-
             fi
 
             if [ "$(type -t npm)" ];
             then
                 echo "npm is already installed now installing npm packages"
             else
-                sudo echo 'prefix=~/.npm-packages' >> ~/.npmrc
                 curl -L https://www.npmjs.com/install.sh | sh
-                sudo echo '#node path
-                export PATH="$HOME/.node/bin:$PATH"' >>~/.bashrc
             fi
             if [ "$(type -t npm)" ];
               then
