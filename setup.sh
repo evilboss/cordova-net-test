@@ -15,9 +15,9 @@ if [ "$(type -t brew)" ];
             then
                 echo "npm is already installed"
             else
-                echo "prefix=~/.npm-packages" >> ~/.npmrc
+                sudo echo 'prefix=~/.npm-packages' >> ~/.npmrc
                 curl -L https://www.npmjs.com/install.sh | sh
-                echo '# node path
+                sudo echo '#node path
                 export PATH="$HOME/.node/bin:$PATH"' >>~/.bashrc
             fi
             if [ "$(type -t npm)" ];
