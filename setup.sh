@@ -8,10 +8,17 @@ if [ "$(type -t brew)" ];
              else
                   echo "node not installed in this machine please wait installing node via linux brew"
                   brew install node --without-npm -v
-                  echo prefix=~/.npm-packages >> ~/.npmrc
-                  curl -L https://www.npmjs.com/install.sh | sh
-                  echo '# node path
-                   export PATH="$HOME/.node/bin:$PATH"' >>~/.bashrc
+
+            fi
+
+            if [ "$(type -t npm)" ];
+            then
+                echo "npm is already installed"
+            else
+                echo "prefix=~/.npm-packages" >> ~/.npmrc
+                curl -L https://www.npmjs.com/install.sh | sh
+                echo '# node path
+                export PATH="$HOME/.node/bin:$PATH"' >>~/.bashrc
             fi
             if [ "$(type -t npm)" ];
               then
