@@ -7,7 +7,7 @@ if [ "$(type -t brew)" ];
                   echo "Node Already Installed now Installing NPM"
              else
                   echo "node not installed in this machine please wait installing node via linux brew"
-                  brew install node --without-npm -v
+                  brew install node -v
 
             fi
 
