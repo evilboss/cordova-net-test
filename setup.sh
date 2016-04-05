@@ -6,9 +6,10 @@ if [ "$(type -t brew)" ];
         echo "Brew not installed in this machine please wait installing linux brew"
         sudo apt-get install build-essential curl git python-setuptools ruby
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
-        sudo echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"
-              export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-              export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >>~/.bash_profile
+        sudo echo '# Brew path
+             export PATH="$HOME/.linuxbrew/bin:$PATH"
+             export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+             export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >>~/.bashrc
 
 fi
 if [ "$(type -t node)" ];
@@ -19,7 +20,8 @@ if [ "$(type -t node)" ];
         brew install node --without-npm
         echo prefix=~/.npm-packages >> ~/.npmrc
         curl -L https://www.npmjs.com/install.sh | sh
-        echo 'export PATH="$HOME/.node/bin:$PATH"' >>~/.bash_profile
+        echo '# node path
+         export PATH="$HOME/.node/bin:$PATH"' >>~/.bashrc
 
 fi
 if [ "$(type -t cordova)" ];
