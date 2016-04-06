@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [ "$(type -t cordova)" ];
    then
         echo "Starting the operation"

@@ -1,2 +1,8 @@
 #!/usr/bin/env bash
-cordova emulate android
+if [ "$(type -t cordova)" ];
+   then
+        echo "Starting the operation"
+        cordova emulate android
+   else
+        echo "Cordova not installed in this machine please run setup.sh"
+fi

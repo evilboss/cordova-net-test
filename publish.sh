@@ -12,10 +12,8 @@ then
      else
           echo "Creating cs-network-tester.apk"
      fi
-     $ANDROID_HOME/build-tools/23.0.1/zipalign 4 \android-release-unsigned.apk $path/build/cs-network-tester.apk
-     echo "Success apk generated to build directory"
-
-
+       $ANDROID_HOME/build-tools/23.0.1/zipalign 4 \android-release-unsigned.apk $path/build/cs-network-tester.apk
+       echo "Success apk generated to build directory"
 else
    echo "android-release-unsigned.apk - Not found, please run build.sh"
 fi

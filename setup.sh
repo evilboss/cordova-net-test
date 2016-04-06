@@ -48,10 +48,14 @@ if [ "$(type -t brew)" ];
         echo "Brew not installed in this machine please wait installing linux brew"
         sudo apt-get install build-essential curl git python-setuptools ruby
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
-        sudo echo '# Brew path
-             export PATH="$HOME/.linuxbrew/bin:$PATH"
-             export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-             export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >>~/.bashrc
+         if grep -q '# Brew path' ~/.bashrc;
+             then
+               echo "Brew alredy setup in bash settings"
+             else
+               echo '# Brew path
+                     export PATH="$HOME/.linuxbrew/bin:$PATH"
+                     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+                     export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >>~/.bashrc
+         fi
         echo "Brew Successfully Installed please close terminal window and run setup again :)"
-
 fi
