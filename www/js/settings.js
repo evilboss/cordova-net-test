@@ -33,6 +33,18 @@ function resolveURL(url) {
     return url;
   }
 }
+function isLongText(length, string) {
+  if (string.length > length) {
+    return '...';
+  }
+  return '';
+
+}
+function setFormValues() {
+  var length = 32;
+  $('#ping-value').html(getPingTarget().substring(0, length) + isLongText(length, getPingTarget()));
+  $('#http-value').html(getSettingsUrl().substring(0, length) + isLongText(length, getSettingsUrl()));
+}
 function init() {
   initializeApp();
   $("#settings-form").submit(function (e) {
@@ -43,6 +55,7 @@ function init() {
     if (pingTarget) {
       if (validateIPaddress(pingTarget)) {
         window.localStorage.setItem("ping-target", pingTarget);
+        $('#ping-target').val('');
         settingsSaved = true;
       } else {
         alert('Target is not a valid ip address');
@@ -51,6 +64,7 @@ function init() {
     if (getTarget) {
       if (isValidURL(getTarget)) {
         window.localStorage.setItem("url", getTarget);
+        $('#http-target').val('');
         settingsSaved = true;
       } else {
 
@@ -61,10 +75,10 @@ function init() {
     if (settingsSaved) {
       alert('Setting Saved');
     }
+    setFormValues();
     e.preventDefault();
   });
   $('#reset').click(function (e) {
-
     var settingsUrl = window.localStorage.getItem("url");
     var pingTarget = window.localStorage.getItem("ping-target");
     if (settingsUrl) {
@@ -73,8 +87,9 @@ function init() {
     if (pingTarget) {
       window.localStorage.removeItem("ping-target");
     }
+    setFormValues();
     alert('Settings Restored');
   });
+  setFormValues();
 }
-
 document.addEventListener("deviceready", init, false);

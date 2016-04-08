@@ -12,7 +12,19 @@
   <title>cs-network-tester : Settings</title>
 </head>
 <body>
-<div include-html="nav-bar.html"></div>
+<nav>
+  <div class="nav-wrapper blue lighten-2">
+    <a href="index.html" class="brand-logo">CS-Network-Tester</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">&#9776;</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
   <h1>Settings</h1>
 
@@ -21,11 +33,11 @@
       <div class="row">
         <div class="input-field col s12">
           <input id="ping-target" type="text" class="validate">
-          <label for="ping-target">Ping Target</label>
+          <label for="ping-target">Ping Target: <span id="ping-value"></span></label>
         </div>
         <div class="input-field col s12">
           <input id="http-target" type="text" class="validate">
-          <label for="http-target">HTTP URL</label>
+          <label for="http-target">HTTP URL: <span id="http-value"></span></label>
         </div>
         <div class="input-field col s6">
           <input class="btn green waves-lighten" type="submit" value="Save">
@@ -49,7 +61,6 @@
     </div>
   </div>
 </footer>
-<script type="text/javascript" src="js/include.js"></script>
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="bower_components/faker/dist/faker.js"></script>
