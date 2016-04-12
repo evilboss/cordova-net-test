@@ -202,9 +202,10 @@
   margin-bottom: 0px !important;
 }
 
-#httpResult *{
+#httpResult * {
   font-size: 75% !important;
 }
+
 .truncate {
   width: 20%;
   white-space: nowrap;
