@@ -1,7 +1,6 @@
 /**
  * Created by gilbertor on 3/17/16.
  */
-
 function init() {
   initializeApp();
   $('#reload').click(function(){

@@ -9,10 +9,9 @@
   <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"
         media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="css/sticky-footer.css"/>
+  <link type="text/css" rel="stylesheet" href="css/spinner.css"/>
   <link type="text/css" rel="stylesheet" href="css/index.css"/>
-  <link type="text/css" rel="stylesheet" href="css/loader.css"/>
   <title>cs-network-tester</title>
-
 </head>
 <body>
 <div id="network-tester">
@@ -28,8 +27,13 @@
         <li><a href="about.html">About</a></li>
       </ul>
     </div>
-  </nav>  <div class="container">
-    <div class="divider"></div>
+  </nav>
+  <div id="spinner-container">
+    <div class="spinner"></div>
+  </div>
+  <div class="container main-content">
+
+
     <a class="modal-trigger" href="#network-modal">
       <div class="section">
         <div class="row">
@@ -96,9 +100,11 @@
               <small id="isConnected">
               </small>
             </h6>
-
-            <p id="httpResult"></p>
-
+            <div class="row">
+              <div class="col s12">
+                <div id="httpResult"></div>
+              </div>
+            </div>
           </div>
           <div class="col s2">
             <div id="httpLed" class="led-box">
@@ -111,19 +117,20 @@
     </a>
 
     <div class="divider"></div>
-    <footer class="page-footer white">
-      <div class="container">
-        <div class="row">
-          <div class="col s6">
-            <button id="exit-app" class="waves-effect blue waves-lighten-2 btn-large col s12">Exit</button>
-          </div>
-          <div class="col s6">
-            <button id="reload" class="waves-effect blue waves-lighten-2 btn-large col s12">Test Again</button>
-          </div>
+  </div>
+  <footer class="page-footer white">
+    <div class="container">
+      <div class="row">
+        <div class="col s6">
+          <button id="exit-app" class="waves-effect blue waves-lighten-2 btn-large col s12">Exit</button>
+        </div>
+        <div class="col s6">
+          <button id="reload" class="waves-effect blue waves-lighten-2 btn-large col s12">Test Again</button>
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
+
 </div>
 <div id="ping-modal" class="modal bottom-sheet">
   <div class="modal-content">
@@ -131,15 +138,15 @@
     <ul class="collection">
       <li class="collection-item">
         <span class="title">Target</span>
-        <a href="#!" class="secondary-content"><i id="target-ping" class="material-icons"></i></a>
+        <span class="secondary-content" id="target-ping"></span>
       </li>
       <li class="collection-item">
         <span class="title">Speed</span>
-        <a href="#!" class="secondary-content"><i id="ave-ping" class="material-icons"></i></a>
+        <span class="secondary-content" id="ave-ping"></span>
       </li>
       <li class="collection-item">
         <span class="title">Status</span>
-        <a href="#!" class="secondary-content"><i id="status-ping" class="material-icons">grade</i></a>
+        <span class="secondary-content" id="status-ping"></span>
       </li>
     </ul>
   </div>
@@ -150,15 +157,15 @@
     <ul class="collection">
       <li class="collection-item">
         <span class="title">Target</span>
-        <a href="#!" class="secondary-content"><i id="target-dns" class="material-icons"></i></a>
+        <span class="secondary-content" id="target-dns"></span>
       </li>
       <li class="collection-item">
         <span class="title">IP Address</span>
-        <a href="#!" class="secondary-content"><i id="ip-dns" class="material-icons"></i></a>
+        <span class="secondary-content" id="ip-dns"></span>
       </li>
       <li class="collection-item">
         <span class="title">Status</span>
-        <a href="#!" class="secondary-content"><i id="status-dns" class="material-icons"></i></a>
+        <span class="secondary-content" id="status-dns"></span>
       </li>
     </ul>
   </div>
@@ -169,15 +176,15 @@
     <ul class="collection">
       <li class="collection-item">
         <span class="title">IP address</span>
-        <a href="#!" class="secondary-content"><i id="ip-address" class="material-icons">Not Connected</i></a>
+        <span class="secondary-content" id="ip-address"></span>
       </li>
       <li class="collection-item">
         <span class="title">Mac Address</span>
-        <a href="#!" class="secondary-content"><i id="mac-address" class="material-icons">Not Connected</i></a>
+        <span class="secondary-content" id="mac-address"></span>
       </li>
       <li class="collection-item">
         <span class="title">Status</span>
-        <a href="#!" class="secondary-content"><i id="network-status" class="material-icons">Offline</i></a>
+        <span class="secondary-content" id="network-status"></span>
       </li>
     </ul>
   </div>

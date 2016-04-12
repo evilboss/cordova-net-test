@@ -99,6 +99,9 @@ function getDns(url) {
     $('#target-dns').html('<strong class="green-text text-darken-3">' + url + '</strong>');
   });
 }
+function stopLoading() {
+  $('#spinner-container').html('');
+}
 function setLed(target, result) {
   var speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
   if (result) {
@@ -138,7 +141,7 @@ function ping(url, target) {
   p.ping(ipList, success, err);
 }
 function initializeApp() {
-  $(".button-collapse").sideNav();
+  $('.button-collapse').sideNav();
   $('#exit-app').click(function () {
     closeApp();
   });
@@ -162,6 +165,7 @@ function updateUi() {
 
         httpDone = true;
       }
+      stopLoading();
     }
   }, 100);
 }

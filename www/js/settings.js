@@ -40,10 +40,18 @@ function isLongText(length, string) {
   return '';
 
 }
+
+function setInputValues() {
+  $('#ping-target').val(getPingTarget());
+  $('#http-target').val(getSettingsUrl());
+}
 function setFormValues() {
   var length = 32;
+
   $('#ping-value').html(getPingTarget().substring(0, length) + isLongText(length, getPingTarget()));
   $('#http-value').html(getSettingsUrl().substring(0, length) + isLongText(length, getSettingsUrl()));
+  setInputValues();
+  $('#settings-modal').closeModal();
 }
 function init() {
   initializeApp();
@@ -75,7 +83,9 @@ function init() {
     if (settingsSaved) {
       alert('Setting Saved');
     }
+
     setFormValues();
+
     e.preventDefault();
   });
   $('#reset').click(function (e) {
@@ -87,9 +97,25 @@ function init() {
     if (pingTarget) {
       window.localStorage.removeItem("ping-target");
     }
+
     setFormValues();
+
     alert('Settings Restored');
   });
+  $('.modal-trigger').leanModal();
+  $('#http-target').focus(function () {
+    $('#http-target').val('');
+  });
+  $("#ping-target").focus(function () {
+    $('#ping-target').val('');
+  });
+  $(".settings-input").focusout(function (e) {
+    if (!e.currentTarget.value) {
+      setInputValues();
+    }
+
+  });
+
   setFormValues();
 }
 document.addEventListener("deviceready", init, false);
