@@ -103,12 +103,6 @@ function init() {
     alert('Settings Restored');
   });
   $('.modal-trigger').leanModal();
-  $('#http-target').focus(function () {
-    $('#http-target').val('');
-  });
-  $("#ping-target").focus(function () {
-    $('#ping-target').val('');
-  });
   $(".settings-input").focusout(function (e) {
     if (!e.currentTarget.value) {
       setInputValues();
