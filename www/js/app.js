@@ -7,6 +7,7 @@ function init() {
     window.location.reload(true);
   });
   $('.modal-trigger').leanModal();
+  showToast('Starting Test', '#000000');
   updateUi();
 }
 document.addEventListener("deviceready", init, false);

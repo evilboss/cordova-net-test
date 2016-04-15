@@ -9,6 +9,7 @@ if [ "$(type -t cordova)" ];
         cordova plugin add cordova-plugin-ping
         cordova plugin add cordova-dns-plugin
         cordova plugin add com-badrit-macaddress
+        cordova plugin add cordova-plugin-x-toast
         cordova platforms ls
         cordova plugin list
         if [ "$(type -t bower)" ];

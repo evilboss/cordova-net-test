@@ -6,10 +6,10 @@ function validateIPaddress(ipaddress) {
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress)) {
       return (true)
     }
-    alert("You have entered an invalid IP address!")
+    showToast('You have entered an invalid IP address', '#d9534f');
     return (false)
   }
-  alert('You need to enter an IP address!');
+
 
 }
 function isValidURL(url) {
@@ -22,11 +22,14 @@ function isValidURL(url) {
       return false;
     }
   }
-  alert('You need to enter a valid URL');
+  showToast('You need to enter a valid URL', '#d9534f');
+
 }
 function resolveURL(url) {
   if (url) {
     if (url.indexOf('http://') >= 0) {
+      return url;
+    } else if (url.indexOf('https://') >= 0) {
       return url;
     }
     url = 'http://' + url;
@@ -40,7 +43,6 @@ function isLongText(length, string) {
   return '';
 
 }
-
 function setInputValues() {
   $('#ping-target').val(getPingTarget());
   $('#http-target').val(getSettingsUrl());
@@ -66,7 +68,9 @@ function init() {
         $('#ping-target').val('');
         settingsSaved = true;
       } else {
-        alert('Target is not a valid ip address');
+        showToast('Target is not a valid ip address', '#d9534f');
+
+
       }
     }
     if (getTarget) {
@@ -74,14 +78,11 @@ function init() {
         window.localStorage.setItem("url", getTarget);
         $('#http-target').val('');
         settingsSaved = true;
-      } else {
-
-        alert('Not a valid URL');
       }
 
     }
     if (settingsSaved) {
-      alert('Setting Saved');
+      showToast('Setting Saved', '#000000');
     }
 
     setFormValues();
@@ -99,8 +100,9 @@ function init() {
     }
 
     setFormValues();
+    showToast('Setting Restored', '#000000');
 
-    alert('Settings Restored');
+
   });
   $('.modal-trigger').leanModal();
   $(".settings-input").focusout(function (e) {

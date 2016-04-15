@@ -10,6 +10,7 @@ if [ "$(type -t cordova)" ];
     cordova plugin rm cordova-dns-plugin
     cordova plugin rm com-badrit-macaddress
     cordova plugin rm cordova-plugin-app-preferences
+    cordova plugin rm cordova-plugin-x-toast
     cordova platform rm android
     cordova platforms ls
     cordova plugin list

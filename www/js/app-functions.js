@@ -4,6 +4,7 @@
 var connected = false;
 var httpDone = false;
 var pingDone = false;
+var tested = false;
 function getSettingsUrl() {
   var url = "https://toolbox.cloudstaff.com/~noc-display/test.txt";
   var settingsUrl = window.localStorage.getItem("url");
@@ -100,21 +101,24 @@ function getDns(url) {
   });
 }
 function stopLoading() {
+  showToast('Finished Test', '#000000');
   $('#spinner-container').html('');
+  tested = true;
+
 }
 function setLed(target, result) {
   var speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
   if (result) {
     result = parseInt(result);
-    if (result < 75) {
-      speed = '<strong class="green-text">Fast</strong>';
+    if (result >= 30) {
+      speed = '<strong class="green-text">Super Fast</strong>';
       $('#led-' + target).html('<div class="led-green"></div>');
     }
-    if (result < 100) {
-      speed = '<strong class="blue-text">OK</strong>';
+    else if (result < 100) {
+      speed = '<strong class="blue-text">Fast</strong>';
       $('#led-' + target).html('<div class="led-blue"></div>');
     }
-    if (result < 200) {
+    else if (result < 200) {
       speed = '<strong class="yellow-text text-darken-3">Slow</strong>';
       $('#led-' + target).html('<div class="led-yellow"></div>');
     }
@@ -146,6 +150,23 @@ function initializeApp() {
     closeApp();
   });
 }
+function showToast(message, status) {
+  window.plugins.toast.showWithOptions({
+    message: message,
+    duration: 'short', // 2000 ms
+    position: 'center',
+    styling: {
+      //  opacity: 0.75, // 0.0 (transparent) to 1.0 (opaque). Default 0.8
+      backgroundColor: status, // make sure you use #RRGGBB. Default #333333
+      // textColor: '#FFFF00', // Ditto. Default #FFFFFF
+      cornerRadius: 16, // minimum is 0 (square). iOS default 20, Android default 100
+      // horizontalPadding: 20, // iOS default 16, Android default 50
+      //   verticalPadding: 16 // iOS default 12, Android default 30
+    }
+  });
+
+}
+
 function updateUi() {
   intervalID = setInterval(function () {
     checkConnection();
@@ -165,7 +186,12 @@ function updateUi() {
 
         httpDone = true;
       }
-      stopLoading();
+      if (httpDone && pingDone) {
+        if (!tested) {
+          stopLoading();
+        }
+
+      }
     }
   }, 100);
 }
